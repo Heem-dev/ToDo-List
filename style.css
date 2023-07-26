@@ -1,0 +1,111 @@
+/* variable for color */
+:root {
+  --varDarker: #163257;
+  --varDark: #295ea3;
+  --varNormal: #367bd6;
+  --varLighter: #7aa5dd;
+}
+
+body {
+  background: linear-gradient(
+    to right,
+    #01131f 0%,
+    #144e75 100%
+  ); /* color: black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#appTitle{
+  color: white;
+  text-shadow: 9px 5px 4px #000000;
+  font-size: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.container{
+  width: 70vw;
+}
+#inputContainer {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+#taskInput{
+  font-size: larger;
+  height: 100%;
+  width: 100%;
+}
+#add{
+  /* block-size: 2em; */
+  height: 100%;
+  margin-left: 1rem;
+}
+
+.listContainer {
+  display: grid;
+  background-color: white;
+  /* border-radius: 0.5rem; */
+  /* padding: 1rem; */
+  /* width: 100%; */
+  margin-top: 1rem;
+}
+
+.taskItem{
+  justify-content: center;
+  align-items: center;
+
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+
+  margin: 0.3rem;
+
+  border: 1px solid #163257;
+  border-radius: 0.1rem;
+}
+.taskText{
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+  font-size: 1.5em;
+}
+
+#add:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+.deleteButton{
+  border: solid 1px #163257;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  border-radius: 99px;
+}
+.deleteButton:hover{
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.finishedTask{
+  border: solid 1px #163257;
+  margin-left: 0.4rem;
+  border-radius: 99px;
+}
+.finishedTask:hover{
+  color: white;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.strikeThrough {
+  text-decoration: line-through;
+  color: #163257;
+  opacity: 0.6;
+}
