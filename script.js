@@ -46,8 +46,11 @@ function addTask(arg) {
 
 // event listener for the add button when clicked or enter is pressed
 addButton.addEventListener("click", addTask);
-taskInput.addEventListener("keydown", function (event) {
-  if (event.keyCode === 13) {
+taskInput.addEventListener("keypress", function (event) {
+  if (taskInput.value.length > 30 && event.keyCode != 13) {
+    taskInput.value = taskInput.value.slice(0, -1);
+    return;
+  } else if (event.keyCode === 13) {
     addTask();
   }
 });
