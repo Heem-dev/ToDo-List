@@ -34,13 +34,13 @@ body {
 
 #appTitle{
   color: white;
-  text-shadow: 9px 5px 4px #000000;
+  text-shadow: 5px 2px 2px #000000;
   font-size: 3rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   margin: 0;
   padding: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .container{
   /* width: 70vw; */
@@ -55,7 +55,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 9fr 1fr 1fr;
   
   /* margin-bottom: 0.5rem; */
   
@@ -67,19 +67,27 @@ body {
 /* border-radius: 10px; */
 
   font-size: larger;
-  height: 4vh;
+  /* height: 4vh; */
+  padding: 15px;
   /* width: 2vw; */
   /* padding: 1em; */
 }
 #add{
 height: 100%;
-  /* block-size: 2em; */
-  margin-left: 1rem;
+  /* block-size: 2.5em; */
+  margin-left: 0.5rem;
 
   /* height: 4vh; */
 /* border-radius: 10px; */
 }
-
+#deleteAll{
+  height: 100%;
+    /* block-size: 3em; */
+    margin-left: 0.5rem;
+  
+    /* height: 4vh; */
+  /* border-radius: 10px; */
+  }
 .listContainer {
   display: grid;
   background-color: white;
@@ -98,7 +106,7 @@ height: 100%;
 
   margin: 0.3rem;
 
-  border-bottom: 3px solid #677381;
+  border-bottom: 3px solid #446d9b;
   /* border-radius: 0.1rem; */
 
   /* height: 3em; */
@@ -144,6 +152,6 @@ height: 50%;
 
 .strikeThrough {
   text-decoration: line-through;
-  color: #163257;
+  color: #909baa;
   opacity: 0.6;
 }

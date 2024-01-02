@@ -75,3 +75,10 @@ function strikeThrough(elem) {
 // event listener for the delete button
 
 loadData();
+
+
+document.getElementById('deleteAll').addEventListener('click',function () {
+  console.log('clicked')
+  listContainer.innerHTML = ''
+  saveData();
+})
