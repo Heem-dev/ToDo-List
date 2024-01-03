@@ -16,6 +16,10 @@ deleteButton.alt = "delete";
 
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
+function modifyText(e) {
+  // console.log(e.target.id);
+}
+
 function addTask(arg) {
   if (taskInput.value === "") {
     taskInput.placeholder = "Task cannot be empty";
@@ -23,19 +27,33 @@ function addTask(arg) {
   } else {
     let newTask = document.createElement("div");
     newTask.classList.add("taskItem");
-    let textElement = document.createElement("p");
+    let textElement = document.createElement("input");
     textElement.classList.add("taskText");
-    textElement.innerText = taskInput.value;
+    textElement.value = taskInput.value;
+    // textElement.disabled = true
+    textElement.maxLength = 26
+
+    newTask.addEventListener("click", (e) => {
+      // e.target.querySelector('input').removeAttribute("disabled");
+
+      
+
+      console.log(e.target);
+    });
+
+    textElement.addEventListener('keyup',saveData())
 
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
 
-    console.log(taskInput.value);
+    // console.log(taskInput.value);
     taskInput.value = "";
     // add delete button to the task.
 
     // deleteButton.addEventListener("click", function () { deleteFunction(newTask) });
     newTask.appendChild(deleteButton.cloneNode(true));
+
+    // adding the modifyText function to the created task.
 
     listContainer.appendChild(newTask);
 
@@ -47,7 +65,7 @@ function addTask(arg) {
 // event listener for the add button when clicked or enter is pressed
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", function (event) {
-  if (taskInput.value.length > 30 && event.keyCode != 13) {
+  if (taskInput.value.length > 25 && event.keyCode != 13) {
     taskInput.value = taskInput.value.slice(0, -1);
     return;
   } else if (event.keyCode === 13) {
@@ -56,11 +74,14 @@ taskInput.addEventListener("keypress", function (event) {
 });
 
 function saveData() {
-  localStorage.setItem("listData", listContainer.innerHTML);
+
+  localStorage.setItem('listDataJson',JSON.stringify(listContainer.innerHTML))
+  // localStorage.setItem("listData", listContainer.innerHTML);
 }
 
 function loadData() {
-  listContainer.innerHTML = localStorage.getItem("listData");
+  // listContainer.innerHTML = localStorage.getItem("listData");
+  listContainer.innerHTML = JSON.parse(localStorage.getItem('listDataJson'))
 }
 
 function deleteFunction(elem) {
@@ -74,11 +95,14 @@ function strikeThrough(elem) {
 }
 // event listener for the delete button
 
-loadData();
 
-
-document.getElementById('deleteAll').addEventListener('click',function () {
-  console.log('clicked')
-  listContainer.innerHTML = ''
+document.getElementById("deleteAll").addEventListener("click", function () {
+  // console.log("clicked");
+  listContainer.innerHTML = "";
   saveData();
-})
+});
+
+
+
+
+loadData();

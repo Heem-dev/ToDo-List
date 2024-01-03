@@ -115,7 +115,7 @@ height: 100%;
   margin: 0;
   padding: 0;
   padding-left: 1rem;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 #add:hover{
@@ -125,8 +125,9 @@ height: 100%;
 .deleteButton{
 height: 50%;
 
-  /* border: solid 1px #163257; */
+  border: solid 1px #163257;
   margin: 0.3rem 0.4rem 0.3rem 0;
+  margin-left: 0.5rem;
   /* border-radius: 10px; */
 
 }
@@ -154,4 +155,5 @@ height: 50%;
   text-decoration: line-through;
   color: #909baa;
   opacity: 0.6;
+  background-color: #d2dbe7;
 }
