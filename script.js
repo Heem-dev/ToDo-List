@@ -27,21 +27,26 @@ function addTask(arg) {
   } else {
     let newTask = document.createElement("div");
     newTask.classList.add("taskItem");
-    let textElement = document.createElement("input");
+    const textElement = document.createElement("input");
     textElement.classList.add("taskText");
-    textElement.value = taskInput.value;
+    textElement.setAttribute('value',taskInput.value)
+    // textElement.value = taskInput.value;
+    // textElement.setAttribute('readonly','readonly')
     // textElement.disabled = true
     textElement.maxLength = 26
 
-    newTask.addEventListener("click", (e) => {
+    textElement.addEventListener("click", (e) => {
       // e.target.querySelector('input').removeAttribute("disabled");
 
-      
-
+      saveData()
+e.target.removeAttribute("readonly");
       console.log(e.target);
     });
 
-    textElement.addEventListener('keyup',saveData())
+    textElement.addEventListener('keyup', (e)=>{
+      console.log(e);
+      e.target.value += e.key 
+    })
 
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
@@ -67,6 +72,7 @@ addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", function (event) {
   if (taskInput.value.length > 25 && event.keyCode != 13) {
     taskInput.value = taskInput.value.slice(0, -1);
+    saveData()
     return;
   } else if (event.keyCode === 13) {
     addTask();
