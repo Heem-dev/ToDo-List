@@ -27,7 +27,7 @@ function addTask(arg) {
   } else {
     let newTask = document.createElement("div");
     newTask.classList.add("taskItem");
-    const textElement = document.createElement("input");
+    let textElement = document.createElement("input");
     textElement.classList.add("taskText");
     textElement.setAttribute('value',taskInput.value)
     // textElement.value = taskInput.value;
@@ -36,7 +36,6 @@ function addTask(arg) {
     textElement.maxLength = 26
 
     textElement.addEventListener("click", (e) => {
-      // e.target.querySelector('input').removeAttribute("disabled");
 
       saveData()
 e.target.removeAttribute("readonly");
@@ -45,20 +44,18 @@ e.target.removeAttribute("readonly");
 
     textElement.addEventListener('keyup', (e)=>{
       console.log(e);
-      e.target.value += e.key 
+      // e.target.value += e.key 
+      e.target.setAttribute('value',e.target.value+e.key)
+
     })
 
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
 
-    // console.log(taskInput.value);
     taskInput.value = "";
-    // add delete button to the task.
 
-    // deleteButton.addEventListener("click", function () { deleteFunction(newTask) });
     newTask.appendChild(deleteButton.cloneNode(true));
 
-    // adding the modifyText function to the created task.
 
     listContainer.appendChild(newTask);
 
