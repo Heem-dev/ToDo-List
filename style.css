@@ -7,24 +7,17 @@
 }
 
 body {
-  background: linear-gradient(
-    to right,
-    #01131f 0%,
-    #144e75 100%
-  ); /* color: black; */
+  background: rgb(46, 46, 51);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-@media screen and (max-width:450px)  {
+@media screen and (max-width: 450px) {
   body {
-    background: linear-gradient(
-      to right,
-      #01131f 0%,
-      #144e75 60%
-    );
+    background: rgb(46, 46, 51);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,17 +25,17 @@ body {
   }
 }
 
-#appTitle{
+#appTitle {
   color: white;
   text-shadow: 5px 2px 2px #000000;
   font-size: 3rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 900;
   margin: 0;
   padding: 0;
   margin-bottom: 0.5rem;
 }
-.container{
+.container {
   /* width: 70vw; */
 
   display: flex;
@@ -56,15 +49,13 @@ body {
   align-items: center;
 
   grid-template-columns: 9fr 1fr 1fr;
-  
-  /* margin-bottom: 0.5rem; */
-  
-  
-  max-width: 700px;
 
+  /* margin-bottom: 0.5rem; */
+
+  max-width: 700px;
 }
-#taskInput{
-/* border-radius: 10px; */
+#taskInput {
+  /* border-radius: 10px; */
 
   font-size: larger;
   /* height: 4vh; */
@@ -72,22 +63,22 @@ body {
   /* width: 2vw; */
   /* padding: 1em; */
 }
-#add{
-height: 100%;
+#add {
+  height: 100%;
   /* block-size: 2.5em; */
   margin-left: 0.5rem;
 
   /* height: 4vh; */
-/* border-radius: 10px; */
-}
-#deleteAll{
-  height: 100%;
-    /* block-size: 3em; */
-    margin-left: 0.5rem;
-  
-    /* height: 4vh; */
   /* border-radius: 10px; */
-  }
+}
+#deleteAll {
+  height: 100%;
+  /* block-size: 3em; */
+  margin-left: 0.5rem;
+
+  /* height: 4vh; */
+  /* border-radius: 10px; */
+}
 .listContainer {
   display: grid;
   background-color: white;
@@ -97,7 +88,7 @@ height: 100%;
   margin-top: 1rem;
 }
 
-.taskItem{
+.taskItem {
   justify-content: center;
   align-items: center;
 
@@ -111,41 +102,39 @@ height: 100%;
 
   /* height: 3em; */
 }
-.taskText{
+.taskText {
   margin: 0;
   padding: 0;
   padding-left: 1rem;
   font-size: 1.3em;
 }
 
-#add:hover{
+#add:hover {
   cursor: pointer;
   opacity: 0.8;
 }
-.deleteButton{
-height: 50%;
+.deleteButton {
+  height: 50%;
 
   border: solid 1px #163257;
   margin: 0.3rem 0.4rem 0.3rem 0;
   margin-left: 0.5rem;
   /* border-radius: 10px; */
-
 }
-.deleteButton:hover{
+.deleteButton:hover {
   cursor: pointer;
   opacity: 0.4;
 }
 
-.finishedTask{
+.finishedTask {
   border: solid 1px #163257;
   /* margin-left: 0.4rem; */
   margin: auto;
   /* border-radius: 10px; */
 
   height: 50%;
-
 }
-.finishedTask:hover{
+.finishedTask:hover {
   color: white;
   cursor: pointer;
   opacity: 0.4;
@@ -156,4 +145,24 @@ height: 50%;
   color: #909baa;
   opacity: 0.6;
   background-color: #d2dbe7;
+}
+
+#deleteAll{
+  /* font-style: none; */
+  background: none;
+  border: none;
+color: rgb(121, 113, 113);
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  border: solid 4px #595a5c;
+  border-radius: 24px;
+
+}
+#add{
+  background: none;
+  border: none;
+  /* color: grey; */
+    border: solid 4px #595a5c;
+  border-radius: 24px;
 }

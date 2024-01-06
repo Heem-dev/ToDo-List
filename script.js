@@ -29,25 +29,27 @@ function addTask(arg) {
     newTask.classList.add("taskItem");
     let textElement = document.createElement("input");
     textElement.classList.add("taskText");
-    textElement.setAttribute('value',taskInput.value)
+    textElement.setAttribute("value", taskInput.value);
     // textElement.value = taskInput.value;
     // textElement.setAttribute('readonly','readonly')
     // textElement.disabled = true
-    textElement.maxLength = 26
+    textElement.maxLength = 26;
 
     textElement.addEventListener("click", (e) => {
-
-      saveData()
-e.target.removeAttribute("readonly");
+      // saveData()
+      e.target.removeAttribute("readonly");
       console.log(e.target);
     });
 
-    textElement.addEventListener('keyup', (e)=>{
+    textElement.addEventListener("keydown", (e) => {
       console.log(e);
-      // e.target.value += e.key 
-      e.target.setAttribute('value',e.target.value+e.key)
-
-    })
+      // e.target.value += e.key
+      let currentVal = e.target.value;
+      let keyy = e.key;
+      e.target.setAttribute("value", currentVal + keyy);
+      textElement.maxLength = 26;
+      saveData();
+    });
 
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
@@ -55,7 +57,6 @@ e.target.removeAttribute("readonly");
     taskInput.value = "";
 
     newTask.appendChild(deleteButton.cloneNode(true));
-
 
     listContainer.appendChild(newTask);
 
@@ -69,7 +70,7 @@ addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", function (event) {
   if (taskInput.value.length > 25 && event.keyCode != 13) {
     taskInput.value = taskInput.value.slice(0, -1);
-    saveData()
+    saveData();
     return;
   } else if (event.keyCode === 13) {
     addTask();
@@ -77,14 +78,13 @@ taskInput.addEventListener("keypress", function (event) {
 });
 
 function saveData() {
-
-  localStorage.setItem('listDataJson',JSON.stringify(listContainer.innerHTML))
+  localStorage.setItem("listDataJson", JSON.stringify(listContainer.innerHTML));
   // localStorage.setItem("listData", listContainer.innerHTML);
 }
 
 function loadData() {
   // listContainer.innerHTML = localStorage.getItem("listData");
-  listContainer.innerHTML = JSON.parse(localStorage.getItem('listDataJson'))
+  listContainer.innerHTML = JSON.parse(localStorage.getItem("listDataJson"));
 }
 
 function deleteFunction(elem) {
@@ -98,14 +98,10 @@ function strikeThrough(elem) {
 }
 // event listener for the delete button
 
-
 document.getElementById("deleteAll").addEventListener("click", function () {
   // console.log("clicked");
   listContainer.innerHTML = "";
   saveData();
 });
-
-
-
 
 loadData();
