@@ -16,6 +16,8 @@ deleteButton.alt = "delete";
 
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
+
+
 function modifyText(e) {
   // console.log(e.target.id);
 }
@@ -26,8 +28,23 @@ function addTask(arg) {
     return;
   } else {
     let newTask = document.createElement("div");
+
     newTask.classList.add("taskItem");
     let textElement = document.createElement("input");
+    textElement.addEventListener("keydown", (e) => {
+      const isAlphanumeric = /^[a-zA-Z0-9]$/.test(e.key);
+      if (!isAlphanumeric) {
+        // e.preventDefault();
+        return;
+      }
+    
+      let currentVal = e.target.value;
+      let keyy = e.key;
+      e.target.setAttribute("value", currentVal + keyy);
+      textElement.maxLength = 26;
+      saveData();
+    });
+
     textElement.classList.add("taskText");
     textElement.setAttribute("value", taskInput.value);
     // textElement.value = taskInput.value;
@@ -35,21 +52,6 @@ function addTask(arg) {
     // textElement.disabled = true
     textElement.maxLength = 26;
 
-    textElement.addEventListener("click", (e) => {
-      // saveData()
-      e.target.removeAttribute("readonly");
-      console.log(e.target);
-    });
-
-    textElement.addEventListener("keydown", (e) => {
-      console.log(e);
-      // e.target.value += e.key
-      let currentVal = e.target.value;
-      let keyy = e.key;
-      e.target.setAttribute("value", currentVal + keyy);
-      textElement.maxLength = 26;
-      saveData();
-    });
 
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
