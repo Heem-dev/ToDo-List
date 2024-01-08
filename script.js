@@ -16,10 +16,23 @@ deleteButton.alt = "delete";
 
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
-
-
-function modifyText(e) {
-  // console.log(e.target.id);
+function modifyText(textElm) {
+  textElm.addEventListener("keydown", (e) => {
+    const isAlphanumeric = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/\s-]$/.test(e.key);
+    if (!isAlphanumeric) {
+      // e.preventDefault();
+      return;
+    } else if (isAlphanumeric) {
+      e.preventDefault();
+      console.log(e);
+      console.log(textElm.value);
+      textElm.value += e.key;
+      console.log(textElm.value);
+      console.log(e.key);
+      textElm.setAttribute("value", textElm.value);
+      saveData();
+    }
+  });
 }
 
 function addTask(arg) {
@@ -31,19 +44,22 @@ function addTask(arg) {
 
     newTask.classList.add("taskItem");
     let textElement = document.createElement("input");
-    textElement.addEventListener("keydown", (e) => {
-      const isAlphanumeric = /^[a-zA-Z0-9]$/.test(e.key);
-      if (!isAlphanumeric) {
-        // e.preventDefault();
-        return;
-      }
-    
-      let currentVal = e.target.value;
-      let keyy = e.key;
-      e.target.setAttribute("value", currentVal + keyy);
-      textElement.maxLength = 26;
-      saveData();
-    });
+    textElement.setAttribute("type", "text");
+    textElement.setAttribute("onclick", "modifyText(this)");
+    // textElement.addEventListener("keydown", (e) => {
+    //   const isAlphanumeric = /^[a-zA-Z0-9]$/.test(e.key);
+    //   if (!isAlphanumeric) {
+    //     // e.preventDefault();
+    //     return;
+    //   }
+
+    //   let currentVal = e.target.value;
+    //   let keyy = e.key;
+
+    //   e.target.setAttribute("value", currentVal + keyy);
+    //   textElement.maxLength = 26;
+    //   saveData();
+    // });
 
     textElement.classList.add("taskText");
     textElement.setAttribute("value", taskInput.value);
@@ -52,9 +68,8 @@ function addTask(arg) {
     // textElement.disabled = true
     textElement.maxLength = 26;
 
-
     newTask.appendChild(finishedTask.cloneNode(true));
-    newTask.appendChild(textElement);
+    newTask.appendChild(textElement.cloneNode(true));
 
     taskInput.value = "";
 
@@ -71,9 +86,10 @@ function addTask(arg) {
 addButton.addEventListener("click", addTask);
 taskInput.addEventListener("keypress", function (event) {
   if (taskInput.value.length > 25 && event.keyCode != 13) {
-    taskInput.value = taskInput.value.slice(0, -1);
+    // taskInput.value = taskInput.value.slice(0, -1);
+
+    event.preventDefault();
     saveData();
-    return;
   } else if (event.keyCode === 13) {
     addTask();
   }
