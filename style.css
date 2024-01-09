@@ -48,7 +48,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  grid-template-columns: 9fr 1fr 1fr;
+  grid-template-columns: 9fr 1fr 1fr 1fr;
 
   /* margin-bottom: 0.5rem; */
 
@@ -93,7 +93,7 @@ body {
   align-items: center;
 
   display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-columns: 1fr 10fr 0.4fr 1fr;
 
   margin: 0.3rem;
 
@@ -165,4 +165,25 @@ color: rgb(121, 113, 113);
   /* color: grey; */
     border: solid 4px #595a5c;
   border-radius: 24px;
+}
+
+.importance_Indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  /* border-radius: 50%; */
+  margin-left: 10px;
+  /* margin: auto; */
+}
+
+.low {
+  background-color: green;
+}
+
+.medium {
+  background-color: rgb(216, 172, 52);
+}
+
+.high {
+  background-color: red;
 }

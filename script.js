@@ -13,16 +13,19 @@ deleteButton.classList.add("deleteButton");
 deleteButton.setAttribute("onclick", "deleteFunction(this.parentNode)");
 deleteButton.src = "close-svgrepo-com.svg";
 deleteButton.alt = "delete";
+const importanceSelect = document.getElementById("importanceSelect");
 
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
 function modifyText(textElm) {
   textElm.addEventListener("keydown", (e) => {
-    const isAlphanumeric = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/\s-]$/.test(e.key);
+    const isAlphanumeric = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/\s-]$/.test(
+      e.key
+    );
     if (!isAlphanumeric) {
       // e.preventDefault();
       return;
-    } else if (isAlphanumeric) {
+    } else if (isAlphanumeric || textElm.value.length >= 26) {
       e.preventDefault();
       console.log(e);
       console.log(textElm.value);
@@ -57,7 +60,7 @@ function addTask(arg) {
     //   let keyy = e.key;
 
     //   e.target.setAttribute("value", currentVal + keyy);
-    //   textElement.maxLength = 26;
+    //
     //   saveData();
     // });
 
@@ -67,10 +70,13 @@ function addTask(arg) {
     // textElement.setAttribute('readonly','readonly')
     // textElement.disabled = true
     textElement.maxLength = 26;
-
+    const importanceValue = importanceSelect.value;
+    newTask.setAttribute("data-importance", importanceValue);
     newTask.appendChild(finishedTask.cloneNode(true));
-    newTask.appendChild(textElement.cloneNode(true));
-
+    newTask.appendChild(textElement);
+    const importanceIndicator = document.createElement("span");
+    importanceIndicator.classList.add("importance_Indicator", importanceValue);
+    newTask.appendChild(importanceIndicator);
     taskInput.value = "";
 
     newTask.appendChild(deleteButton.cloneNode(true));
