@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css"> </link>
+    <link rel="stylesheet" href="style.css">
+    </link>
 </head>
+
 <body>
-    <h1  id="appTitle">ToDo List</h1>
+    <h1 id="appTitle">ToDo List</h1>
     <div class="container">
         <div class="inputContainer" id="inputContainer">
-            <input type="text" id="taskInput" placeholder="Enter a task" ></input>
-            <select id="importanceSelect">
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
+            <input type="text" id="taskInput" placeholder="Enter a task"></input>
+            <form id="importanceForm">
+                <input type="radio" id="low" name="importanceSelect" value="low" checked="checked">
+                <label for="Low">Low</label>
+                <input type="radio" id="medium" name="importanceSelect" value="medium">
+                <label for="Medium">Medium</label>
+                <input type="radio" id="high" name="importanceSelect" value="high">
+                <label for="High">High</label>
+                </form> 
             <img src="icons8-plus (2).svg" id="add"></img>
-            <button aria-placeholder="Delete All" id="deleteAll">Delete All</button>
+            <button aria-placeholder="Delete All" id="deleteAll">Clear All</button>
         </div>
         <div class="listContainer" id="listContainer">
         </div>
-        
+
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>

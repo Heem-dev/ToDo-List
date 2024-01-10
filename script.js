@@ -13,7 +13,6 @@ deleteButton.classList.add("deleteButton");
 deleteButton.setAttribute("onclick", "deleteFunction(this.parentNode)");
 deleteButton.src = "close-svgrepo-com.svg";
 deleteButton.alt = "delete";
-const importanceSelect = document.getElementById("importanceSelect");
 
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
@@ -70,7 +69,8 @@ function addTask(arg) {
     // textElement.setAttribute('readonly','readonly')
     // textElement.disabled = true
     textElement.maxLength = 26;
-    const importanceValue = importanceSelect.value;
+
+    const importanceValue = document.querySelector('input[type=radio]:checked').value;
     newTask.setAttribute("data-importance", importanceValue);
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
