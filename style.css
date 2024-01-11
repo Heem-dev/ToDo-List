@@ -24,7 +24,17 @@ body {
     align-items: center;
   }
 }
-
+@media screen and (max-width: 670px) {
+  .inputContainer {
+    display: grid;
+    /* first element takes a whole row */
+    /* grid-template-rows: 1fr 1fr; */
+  }
+  #taskInput {
+    grid-column: span 4;
+    margin-bottom: 0.2em;
+  }
+}
 #appTitle {
   color: white;
   text-shadow: 5px 2px 2px #000000;
@@ -67,6 +77,8 @@ body {
   padding: 15px;
   /* width: 2vw; */
   /* padding: 1em; */
+
+  border-radius: 24px;
 }
 #add {
   height: 70%;
@@ -162,6 +174,10 @@ body {
   font-weight: 900;
   border: solid 4px #595a5c;
   border-radius: 24px;
+
+  height: 2.5em;
+
+  padding: 4px;
 }
 #add {
   background: none;
@@ -169,6 +185,9 @@ body {
   /* color: grey; */
   border: solid 4px #595a5c;
   border-radius: 24px;
+
+  padding: 4px;
+  height: 2.5em;
 }
 #deleteAll:hover {
   cursor: pointer;
@@ -183,6 +202,13 @@ body {
   margin-left: 10px;
   /* margin: auto; */
 }
+#importanceForm {
+  border: solid 4px #595a5c;
+  border-radius: 24px;
+  padding: 0.9em;
+  margin-left: 0.5em;
+
+}
 
 .low {
   background-color: green;
@@ -195,3 +221,15 @@ body {
 .high {
   background-color: red;
 }
+button {
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+
+}
+
+*{
+font-family:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
