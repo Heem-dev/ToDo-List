@@ -17,20 +17,17 @@ deleteButton.alt = "delete";
 let deleteBtn = document.querySelectorAll(".deleteButton");
 
 function modifyText(textElm) {
-  textElm.addEventListener("keydown", (e) => {
+  textElm.addEventListener("input", (e) => {
     const isAlphanumeric = /^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\/\s-]$/.test(
-      e.key
+      e.data
     );
     if (!isAlphanumeric) {
       // e.preventDefault();
+      saveData();
       return;
-    } else if (isAlphanumeric || textElm.value.length >= 26) {
-      e.preventDefault();
-      console.log(e);
-      console.log(textElm.value);
-      textElm.value += e.key;
-      console.log(textElm.value);
-      console.log(e.key);
+    } else if (isAlphanumeric) {
+      // e.preventDefault();
+      // textElm.value += e.key;
       textElm.setAttribute("value", textElm.value);
       saveData();
     }
@@ -70,11 +67,15 @@ function addTask(arg) {
     // textElement.disabled = true
     textElement.maxLength = 26;
 
-    const importanceValue = document.querySelector('input[type=radio]:checked').value;
+    const importanceValue = document.querySelector(
+      "input[type=radio]:checked"
+    ).value;
     newTask.setAttribute("data-importance", importanceValue);
     newTask.appendChild(finishedTask.cloneNode(true));
     newTask.appendChild(textElement);
     const importanceIndicator = document.createElement("span");
+    importanceIndicator.setAttribute("data-importance", importanceValue);
+    importanceIndicator.setAttribute("onclick", "importanceCycle(this.parentNode)");
     importanceIndicator.classList.add("importance_Indicator", importanceValue);
     newTask.appendChild(importanceIndicator);
     taskInput.value = "";
@@ -127,5 +128,26 @@ document.getElementById("deleteAll").addEventListener("click", function () {
   listContainer.innerHTML = "";
   saveData();
 });
+
+function importanceCycle(elem) {
+  let currentImportance = elem.getAttribute("data-importance");
+  let nextImportance = "";
+  switch (currentImportance) {
+    case "low":
+      nextImportance = "medium";
+      break;
+    case "medium":
+      nextImportance = "high";
+      break;
+    case "high":
+      nextImportance = "low";
+      break;
+  }
+  elem.setAttribute("data-importance", nextImportance);
+  elem.querySelector(".importance_Indicator").classList.remove(currentImportance);
+  elem.querySelector(".importance_Indicator").classList.add(nextImportance);
+  saveData();
+}
+
 
 loadData();
